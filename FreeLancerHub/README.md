@@ -1,12 +1,55 @@
-# React + Vite
+# FreelancerHub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+FreelancerHub is a web application built with React, Vite, Node.js, and Express.js, designed to connect freelancers with clients. The platform allows users to sign up, log in, and create gigs, enabling sellers to showcase their services and customers to find the right talent for their projects.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User  Authentication**: 
+  - Sign up and log in for both buyers and sellers.
+  - Secure authentication using JWT (JSON Web Tokens).
 
-## Expanding the ESLint configuration
+- **Seller Features**:
+  - Create and manage gigs.
+  - View and edit existing gigs.
+  - Chat functionality to communicate with customers.
+  - View messages and notifications.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Customer Features**:
+  - Browse and search for gigs.
+  - Send messages to sellers.
+  - Make payments securely using Stripe.
+
+- **Image Storage**: 
+  - Upload and store images using Cloudinary.
+
+## Tech Stack
+
+- **Frontend**: 
+  - React
+  - Vite
+  - CSS (or any preferred styling library)
+
+- **Backend**: 
+  - Node.js
+  - Express.js
+  - MongoDB (or any preferred database)
+
+- **Payment Processing**: 
+  - Stripe
+
+- **Image Storage**: 
+  - Cloudinary
+
+## Installation
+
+### Prerequisites
+
+- Node.js (v14 or higher)
+- npm or yarn
+- MongoDB (if using a local database)
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/freelancerhub.git
+cd freelancerhub
