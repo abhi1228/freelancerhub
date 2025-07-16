@@ -1,0 +1,46 @@
+.login{
+    display: flex;
+    justify-content: center;
+    
+
+    .container{
+        display: flex;
+        flex-direction: column;
+        width: 25%;
+        background-color: white;
+        border-radius: 20px;
+        margin: 10px;
+        padding: 10px;
+        margin-bottom: 100px;
+
+         h2{
+                color: rgb(70, 68, 68);
+            }
+
+        .loginForm{
+
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            label{
+                color: rgb(75, 73, 73);
+            }
+
+            input{
+                padding: 8px;
+                border-color: 1px solid lightblue;
+            }
+
+            button{
+                padding: 10px ;
+                color: white;
+                background-color: rgb(8, 163, 117);
+                border:none
+            }
+
+           
+
+        }
+    }
+}
