@@ -1,6 +1,7 @@
-import NavBar from "./components/navbar/NavBar";
+
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Home from "./Pages/home/Home";
+
 import Footer from "./Pages/footer/Footer";
 import Gigs from "./Pages/gigs/Gigs";
 import Gig from "./Pages/gig/Gig";
@@ -18,6 +19,7 @@ import {
 } from "@tanstack/react-query";
 import Pay from "./Pages/pay/Pay";
 import Success from "./Pages/success/Success";
+import NavBar from './components/navbar/Navbar';
 function App() {
   const queryClient = new QueryClient();
 
