@@ -2,24 +2,28 @@ import React, { useContext } from 'react'
 import './Home.scss';
 import Featured from '../../components/navbar/featured/Featured';
 import TrustedBy from '../../components/trustedBy/TrustedBy';
-import Slide from '../../components/Slide/Slide';
 import { cards,projects } from '../../data';
 import CatCard from '../../components/catCard/CatCard';
 import ProjectCard from '../../components/projectCard/ProjectCard/ProjectCard';
 import { userContext, useUserContext } from '../../context/UserContext';
+import Slide from '../../components/Slide/Slide';
+  
 
 const Home = () => {
   const { user } = useUserContext();
-  console.log(import.meta.env.VITE_BACKEND_URL)
+  
   return (
     <div className='home'>
       <Featured />
       <TrustedBy />
-      <Slide slidesToShow={5} arrowsScroll={5}>
+      {/* start */}
+     <Slide slidesToShow={5} slidesToScroll={2} >
          {
             cards.map((card)=><CatCard key={card.id} item={card} />)
          }
       </Slide>
+
+      {/* end */}
             <div className="features">
         <div className="container">
           <div className="item">
@@ -99,11 +103,14 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Slide slidesToShow={4} arrowsScroll={4}>
+       {/* start */}
+     <Slide slidesToShow={4} slidesToScroll={2} >
          {
             projects.map((project)=><ProjectCard key={project.id} project={project} />)
          }
       </Slide>
+
+      {/* end */}
     </div>
   )
 }

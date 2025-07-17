@@ -83,7 +83,7 @@ const Gigs = () => {
           </div>
         </div>
         <div className="cards">
-           {isLoading ? "Loading..." : error ? "Something went wrong" : data ?  data.map(gig=>{
+           {isLoading ? "Loading..." : error ? "Something went wrong" : data.length ?  data.map(gig=>{
                 return <GigCard key={gig._id}  item={gig}/>
            }) :
            <div className="notFound">

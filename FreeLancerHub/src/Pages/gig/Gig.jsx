@@ -1,14 +1,16 @@
 import React from "react";
 import "./Gig.scss";
-import { Slider } from "infinite-react-carousel/lib";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import newRequest from "../../utils/newRequest";
 import Reviews from "../../components/reviews/Reviews";
 import { useUserContext } from "../../context/UserContext";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 function Gig() {
   const { id } = useParams();
-  const {user}=useUserContext();
+  const { user } = useUserContext();
   const { isLoading, error, data } = useQuery({
     queryKey: ["gig"],
     queryFn: () =>
@@ -16,13 +18,20 @@ function Gig() {
         return res.data;
       }),
   });
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
 
   const userId = data?.userId;
-  let ContinueBtn=false
-  if(user){
-   ContinueBtn  = user._id !== data?.userId;
+  let ContinueBtn = false;
+  if (user) {
+    ContinueBtn = user._id !== data?.userId;
   }
- 
+
   const {
     isLoading: isLoadingUser,
     error: errorUser,
@@ -39,16 +48,19 @@ function Gig() {
 
   return (
     <div className="gig">
-       {isLoading ? (
+      {isLoading ? (
         "loading"
       ) : error ? (
         "Something went wrong!"
       ) : (
-      <div className="container">
-        <div className="left">
-          <span className="breadcrumbs"><Link to="/">Home</Link> {">"}<Link to="/gigs"> Gigs</Link>  </span>
-          <h1>{data.title}</h1>
-          {isLoadingUser ? (
+        <div className="container">
+          <div className="left">
+            <span className="breadcrumbs">
+              <Link to="/">Home</Link> {">"}
+              <Link to="/gigs"> Gigs</Link>{" "}
+            </span>
+            <h1>{data.title}</h1>
+            {isLoadingUser ? (
               "loading"
             ) : errorUser ? (
               "Something went wrong!"
@@ -72,17 +84,21 @@ function Gig() {
                 )}
               </div>
             )}
-           
-          <Slider slidesToShow={1} arrowsScroll={1} className="slider">
+            <Slider {...settings}>
+              {data.images.map((img) => (
+                <img key={img} src={img} alt="" />
+              ))}
+            </Slider>
+            
+
+            {/* <Slider slidesToShow={1} arrowsScroll={1} className="slider">
              {data.images.map((img) => (
                 <img key={img} src={img} alt="" />
               ))}
-          </Slider>
-          <h2>About This Gig</h2>
-          <p>
-           {data.desc}
-          </p>
-                    {isLoadingUser ? (
+          </Slider> */}
+            <h2>About This Gig</h2>
+            <p>{data.desc}</p>
+            {isLoadingUser ? (
               "loading"
             ) : errorUser ? (
               "Something went wrong!"
@@ -136,9 +152,9 @@ function Gig() {
                 </div>
               </div>
             )}
-          <Reviews gigId={id} />
-        </div>
-         <div className="right">
+            <Reviews gigId={id} />
+          </div>
+          <div className="right">
             <div className="price">
               <h3>{data.shortTitle}</h3>
               <h2>$ {data.price}</h2>
@@ -162,17 +178,17 @@ function Gig() {
                 </div>
               ))}
             </div>
-            {
-              user ? 
-              ContinueBtn &&(<Link className="link" to={`/pay/${id}`}>
-            <button>Continue</button>
-            </Link>)
-            :
-             ( <Link className="link" to={`/login`}>
-            <button>Login to Continue</button>
-            </Link>)
-            }
-            
+            {user ? (
+              ContinueBtn && (
+                <Link className="link" to={`/pay/${id}`}>
+                  <button>Continue</button>
+                </Link>
+              )
+            ) : (
+              <Link className="link" to={`/login`}>
+                <button>Login to Continue</button>
+              </Link>
+            )}
           </div>
         </div>
       )}
